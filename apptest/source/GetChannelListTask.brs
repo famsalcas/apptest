@@ -67,8 +67,8 @@ function ParseM3U(m3uContent as String) as Object
                         channelNode.SDPosterUrl = channelInfo.logo
                     else
                         ' Usar imagen por defecto si no hay logo
-                        channelNode.HDPosterUrl = "pkg:/images/channel-default.jpg"
-                        channelNode.SDPosterUrl = "pkg:/images/channel-default.jpg"
+                        channelNode.HDPosterUrl = "pkg:/images/channel-default.png"
+                        channelNode.SDPosterUrl = "pkg:/images/channel-default.png"
                     end if
                     
                     ' Agregar a categoría
