@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="Scene" extends="Scene">
+  <script type="text/brightscript" uri="pkg:/source/main.brs" />
+  
+  <children>
+    <!-- Fondo de la aplicación -->
+    <Poster id="backgroundPoster" 
+            width="1920" 
+            height="1080" 
+            translation="[0,0]" />
+    
+    <!-- Lista de canales agrupados por categoría -->
+    <RowList id="rowList"
+             translation="[60, 100]"
+             width="900"
+             height="800"
+             itemSpacing="[0, 20]"
+             rowItemSpacing="[20, 0]"
+             showRowLabel="[true]"
+             rowLabelOffset="[0, 20]"
+             focusXOffset="[60]"
+             visible="false">
+      
+      <ContentNode role="content" />
+      
+      <!-- Configuración de estilo para las filas -->
+      <Rectangle color="0x00000080"
+                 width="900"
+                 height="800" />
+    </RowList>
+    
+    <!-- Reproductor de video -->
+    <Video id="Video"
+           translation="[960, 100]"
+           width="960"
+           height="540"
+           loop="false"
+           autoplay="false">
+      <Rectangle color="0x000000FF"
+                 width="960"
+                 height="540" />
+    </Video>
+    
+    <!-- Información del canal actual -->
+    <Group id="channelInfo" 
+           translation="[960, 660]"
+           visible="true">
+      
+      <Rectangle color="0x000000AA"
+                 width="960"
+                 height="120" />
+      
+      <Poster id="channelLogo"
+              translation="[20, 20]"
+              width="80"
+              height="80" />
+      
+      <Label id="channelTitle"
+             translation="[120, 30]"
+             width="800"
+             height="60"
+             font="font:MediumBoldSystemFont"
+             color="0xFFFFFFFF"
+             text="Selecciona un canal" />
+      
+      <Label id="channelDescription"
+             translation="[120, 70]"
+             width="800"
+             height="30"
+             font="font:SmallSystemFont"
+             color="0xCCCCCCFF"
+             text="Usa las flechas para navegar" />
+    </Group>
+    
+    <!-- Indicador de carga -->
+    <Group id="loadingSpinner" 
+           translation="[960, 540]"
+           visible="false">
+      
+      <Rectangle color="0x000000AA"
+                 width="200"
+                 height="100"
+                 translation="[-100, -50]" />
+      
+      <Label translation="[-80, -20]"
+             width="160"
+             height="40"
+             font="font:MediumSystemFont"
+             color="0xFFFFFFFF"
+             text="Cargando..."
+             horizAlign="center"
+             vertAlign="center" />
+    </Group>
+    
+    <!-- Instrucciones de navegación -->
+    <Group id="instructions" 
+           translation="[60, 920]">
+      
+      <Label width="1800"
+             height="40"
+             font="font:SmallSystemFont"
+             color="0xAAAAAAFF"
+             text="← → Navegar | Enter: Seleccionar | Options: Configurar URL | Play/Pause: Controlar reproducción"
+             horizAlign="center" />
+    </Group>
+  </children>
+  
+  <!-- Tareas en segundo plano -->
+  <children>
+    <Task id="save_feed_url" />
+    <Task id="get_channel_list" />
+  </children>
+  
+</component>
