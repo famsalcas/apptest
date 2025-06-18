@@ -1,9 +1,9 @@
 sub init()
     m.top.backgroundURI = "pkg:/images/background-controls.jpg"
 
-    m.save_feed_url = m.top.FindNode("save_feed_url")
-    m.get_channel_list = m.top.FindNode("get_channel_list")
-    m.get_channel_list.ObserveField("content", "SetContent")
+    m.SaveFeedUrlTask = m.top.FindNode("SaveFeedUrlTask")
+    m.GetChannelListTask = m.top.FindNode("GetChannelListTask")
+    m.GetChannelListTask.ObserveField("content", "SetContent")
 
     ' Usar RowList en lugar de LabelList para mejor presentación
     m.rowList = m.top.FindNode("rowList")
