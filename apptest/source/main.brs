@@ -1,9 +1,10 @@
 sub init()
     m.top.backgroundURI = "pkg:/images/background-controls.jpg"
 
-    m.SaveFeedUrlTask = m.top.FindNode("SaveFeedUrlTask")
-    m.GetChannelListTask = m.top.FindNode("GetChannelListTask")
-    m.GetChannelListTask.ObserveField("content", "SetContent")
+    ' Cambio menor: nombres de tareas actualizados
+    m.save_feed_url = m.top.FindNode("SaveFeedUrlTask")
+    m.get_channel_list = m.top.FindNode("GetChannelListTask")
+    m.get_channel_list.ObserveField("content", "SetContent")
 
     ' Usar RowList en lugar de LabelList para mejor presentación
     m.rowList = m.top.FindNode("rowList")
@@ -131,9 +132,20 @@ end sub
 
 sub updateChannelInfo()
     if m.video.content <> invalid
-        m.channelInfo.title = m.video.content.title
-        if m.video.content.HDPosterUrl <> invalid and m.video.content.HDPosterUrl <> ""
-            m.channelInfo.logo = m.video.content.HDPosterUrl
+        ' Actualizar título del canal
+        titleLabel = m.channelInfo.FindNode("channelTitle")
+        if titleLabel <> invalid
+            titleLabel.text = m.video.content.title
+        end if
+        
+        ' Actualizar logo del canal
+        logoNode = m.channelInfo.FindNode("channelLogo")
+        if logoNode <> invalid
+            if m.video.content.HDPosterUrl <> invalid and m.video.content.HDPosterUrl <> ""
+                logoNode.uri = m.video.content.HDPosterUrl
+            else
+                logoNode.uri = "pkg:/images/channel-default.jpg"
+            end if
         end if
     end if
 end sub
